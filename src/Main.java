@@ -7,8 +7,11 @@ public class Main {
 
         int sum = 0;
         int i = 0;
-        while (sum < 2_459_000){
-            sum += 15_000;
+        int monthlyPayment = 15_000;
+        int requiredAmount = 2_459_000;
+        while (sum < requiredAmount){
+            sum += monthlyPayment;
+            sum += sum/100;// 1 % ежемесячно
             i++;
             System.out.println("Месяц " + i + ", сумма накоплений равна " + sum + " рублей.");
 
@@ -40,8 +43,9 @@ public class Main {
         System.out.println("\nЗадание 4\n");
 
         int money = 15_000;
+        requiredAmount = 12_000_000;
         i = 0;
-        while (money < 12_000_000){
+        while (money < requiredAmount){
             money += money * 0.07;
             i++;
             System.out.println("Месяц " + i + ", сумма накоплений: " + money);
@@ -51,8 +55,9 @@ public class Main {
         System.out.println("\nЗадание 5\n");
 
         money = 15_000;
+        requiredAmount = 12_000_000;
         i = 0;
-        while (money < 12_000_000){
+        while (money < requiredAmount){
             money += money * 0.07;
             i++;
             if(i % 6 == 0){
@@ -64,8 +69,9 @@ public class Main {
         System.out.println("\nЗадание 6\n");
 
         money = 15_000;
-        for (i = 0; i <= 9*12; i++){
-            money += money * 0.07;
+        float monthlyInterest = 0.07F;
+        for (i = 1; i <= 9*12; i++){ // изначально ошибка была не только в том что вывод начинался с нулевого месяца, но и в том что кол-во итераций было 9*12+1 поэтому изменяю i=0 на i=1
+            money *= (1+monthlyInterest); // Не совсем понял что вас не устроило в подсчете процентов. Если сделал не так, пожалуйста объясните. Спасибо.
             if(i % 6 == 0){
                 System.out.println("Месяц " + i + ", сумма накоплений: " + money);
             }
@@ -74,11 +80,10 @@ public class Main {
         System.out.println("\nЗадание 7\n");
 
         int firstFriday = 3;
-        for (i=0; i <= 31; i++){
-            if(i % 7 == firstFriday){
-                System.out.println("Сегодня пятница, " + i + "-е число. Необходимо подготовить отчет");
-            }
+        for (; firstFriday <= 31; firstFriday += 7){
+                System.out.println("Сегодня пятница, " + firstFriday + "-е число. Необходимо подготовить отчет");
         }
+
 
         System.out.println("\nЗадание 8\n");
 
